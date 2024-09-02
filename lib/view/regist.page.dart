@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -12,24 +13,26 @@ class RegistPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: 25),
               Image.asset(
                 'assets/images/logo-taxcenter.png',
                 width: 209,
                 height: 81,
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 25),
               Container(
-                height: 560,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                height: 610,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-                  color: Color(0xFFFFFFFF),                  
+                  color: Color(0xffFFFFFF),                  
                 ),
                 child: Column(
                   children: [
                     SizedBox(height: 40),
-                    Text('Buat Akun Anda', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24)),
+                    Text('Buat Akun Anda', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24)),
                     SizedBox(height: 30),
+                    // INPUT EMAIL
                     Row(
                       children: [
                         Padding(
@@ -52,7 +55,7 @@ class RegistPage extends StatelessWidget {
                         key: Key('email'),
                         name: 'email',
                         decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
+                          border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide(),
                           ),
@@ -64,13 +67,16 @@ class RegistPage extends StatelessWidget {
                         ]),
                       ),
                     ),
+                    // END INPUT EMAIL
+
+                    // INPUT USERNAME
                     SizedBox(height: 15),
                     Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 32),
                           child: Text(
-                            'Username',
+                            'Nama Lengkap',
                             style: TextStyle(
                             fontWeight: FontWeight.w600, 
                             fontSize: 14,
@@ -84,10 +90,10 @@ class RegistPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: FormBuilderTextField(
-                        key: _formKey,
+                        key: Key('username'),
                         name: 'username',
                         decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
+                          border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide(),
                           ),
@@ -99,6 +105,9 @@ class RegistPage extends StatelessWidget {
                         ]),
                       ),
                     ),
+                    // END INPUT USERNAME
+
+                    // INPUT NOMOR TELEPON
                     SizedBox(height: 15),
                     Row(
                       children: [
@@ -118,16 +127,122 @@ class RegistPage extends StatelessWidget {
                     SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(),
+                      child: FormBuilderTextField(
+                      name: 'telp',
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(),
+                        ),
+                        hintText: 'Masukkan Nomor Telepon Anda*'
+                        ),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(13)], // Input hanya bisa angka dengan maksimal 13 digit
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                    ),
+                    ),
+                    // END INPUT NOMOR TELEPON
+                    
+                    // INPUT PASSWORD
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 32),
+                          child: Text(
+                            'Password',
+                            style: TextStyle(
+                            fontWeight: FontWeight.w600, 
+                            fontSize: 14,
+                            ),
+                            textAlign: TextAlign.start,
                           ),
-                          hintText: 'Masukkan Nama Anda *',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32),
+                      child: FormBuilderTextField(
+                        key: Key('password'),
+                        name: 'password',
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(),
+                          ),
+                          hintText: 'Masukkan Password Anda*',
+                          ),
+                        obscureText: true,
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.password(
+                            errorText: 'Password wajib diisi',
+                          ),
+                        ]),
+                      ),
+                    ),
+                    // END INPUT PASSWORD
+
+                    // SUBMIT BUTTON
+                    SizedBox(height: 30),
+                    Container(
+                      width: 360,
+                      height: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF253475),
+                            shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            ),
+                          ),
+                          key: Key('Register'),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Processing Data')),
+                              );
+                            }
+                          },
+                          child: Text(
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                            'Daftar',
+                          ),
                         ),
                       ),
                     ),
+                    // END SUBMIT BUTTON
+
+                    // LOGIN TEKS BUTTON
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Sudah memiliki akun?'
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: TextStyle(
+                              color: Color(0xFF3E63F4),
+                            ),
+                          ),
+                          key: Key('Login'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('Masuk'),
+                        ),
+                      ],
+                    ),
+                    // END LOGIN TEKS BUTTON
                   ],
                 )
               ),
