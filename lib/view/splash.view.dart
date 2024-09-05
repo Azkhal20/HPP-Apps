@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:hpp_tax_center/view/regist.page.dart';
+import 'package:hpp_tax_center/auth/regist.page.dart';
+import 'package:hpp_tax_center/auth/login.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -56,7 +57,9 @@ class SplashView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     child: Text(
                       "Masuk",
                       style: TextStyle(
@@ -76,6 +79,7 @@ class SplashView extends StatelessWidget {
                       backgroundColor: Color(0xffffffff),
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
+                      side: BorderSide(color: Color(0xff253475)),
                       ),
                     ),
                     onPressed: () {

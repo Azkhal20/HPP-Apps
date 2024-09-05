@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:hpp_tax_center/auth/login.dart';
+import 'package:hpp_tax_center/auth/otp.dart';
+import 'package:sms_autofill/sms_autofill.dart';
+
+
 
 class RegistPage extends StatelessWidget {
   final _formKey = GlobalKey<FormBuilderState>();
@@ -200,13 +205,13 @@ class RegistPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(6),
                             ),
                           ),
-                          key: Key('Register'),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Processing Data')),
-                              );
-                            }
+                          key: Key('ver_otp'),
+                          onPressed: () async {
+                            // HTTP REQUEST
+                            final signcode = await SmsAutoFill().getAppSignature;
+                            print(signcode);
+                            // END HTTP REQUEST
+                            Navigator.push(context, MaterialPageRoute(builder: (c) => Otp()));
                           },
                           child: Text(
                             style: TextStyle(
@@ -236,7 +241,7 @@ class RegistPage extends StatelessWidget {
                           ),
                           key: Key('Login'),
                           onPressed: () {
-                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                           },
                           child: Text('Masuk'),
                         ),
