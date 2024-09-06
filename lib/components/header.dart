@@ -24,19 +24,18 @@ class _HeaderState extends State<Header> {
             'Perusahaan Dagang',
             style: semibold24.copyWith(color: Colors.white),
           ),
-          const SizedBox(height: 16), // Add some spacing between title and tabs
+          const SizedBox(height: 16), 
 
-          // Container wrapping the Row for decoration
           Container(
             decoration: BoxDecoration(
-              color: Colors.yellow[700], // Background color like the image
+              color: Colors.yellow[700], 
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
-                _buildTab(context, 'P.Awal', 0), // Tab index 0
-                _buildTab(context, 'Pembelian', 1), // Tab index 1
-                _buildTab(context, 'P.Akhir', 2), // Tab index 2
+                _buildTab(context, 'P.Awal', 0), 
+                _buildTab(context, 'Pembelian', 1), 
+                _buildTab(context, 'P.Akhir', 2), 
               ],
             ),
           ),
