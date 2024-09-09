@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpp_tax_center/view/home.dart';
-import 'package:hpp_tax_center/view/home_screen.dart';
+import 'package:hpp_tax_center/view/persediaan.awal.dart';
 import 'package:hpp_tax_center/view/splash.view.dart';
 
 
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: HomePage(),
+      home: PerAwal(),
     );
   }
 }
