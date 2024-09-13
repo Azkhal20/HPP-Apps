@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class PerAwal extends StatelessWidget {
   List<Tab> myTab = [
     Tab(
@@ -12,6 +13,7 @@ class PerAwal extends StatelessWidget {
       text: 'P. Akhir',
     ),
   ];
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -32,15 +34,18 @@ class PerAwal extends StatelessWidget {
               child: TabBar(
                 indicatorColor: Color(0xFFFFFFFF),
                 indicatorPadding: EdgeInsets.all(5),
+                indicatorSize: TabBarIndicatorSize.tab,
                 labelColor: Color(0xFFFFFFFF),
                 labelStyle: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
-                unselectedLabelColor: Color(0xFF000000),
+                unselectedLabelStyle: TextStyle(
+                color: Color(0xFFFFFFFF),
+                ),
                 tabs: myTab,
               )),
-          backgroundColor: Color(0xFFF0BB21),
+          backgroundColor: Color(0xFF080C67),
         ),
         body: TabBarView(
           children: [

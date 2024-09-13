@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889289802965",
+    "project_id": "hpp-tax-center",
+    "storage_bucket": "hpp-tax-center.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889289802965:android:357b8f4b525a2306034e5c",
+        "android_client_info": {
+          "package_name": "com.example.hpp_tax_center"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUODHB0ZGoPB2SYOgbs3dEEPFPjZSN8vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
