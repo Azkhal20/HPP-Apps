@@ -19,7 +19,7 @@ class SplashView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Penjelasan Mengenai \n HPP/Fitur yang tersedia \n pada Apps ini',
+              'Penjelasan \n HPP/Fitur yang \n pada Apps ini',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,

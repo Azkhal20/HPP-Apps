@@ -18,25 +18,25 @@ class RegistPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 25),
+              SizedBox(height: 40),
               Image.asset(
                 'assets/images/logo-taxcenter.png',
                 width: 209,
                 height: 81,
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 40),
               Container(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                height: 610,
+                height: 670,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-                  color: Color(0xffFFFFFF),                  
+                  color: Color.fromARGB(255, 255, 255, 255),                  
                 ),
                 child: Column(
                   children: [
                     SizedBox(height: 40),
                     Text('Buat Akun Anda', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24)),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     // INPUT EMAIL
                     Row(
                       children: [
@@ -197,7 +197,7 @@ class RegistPage extends StatelessWidget {
                       width: 360,
                       height: 50,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF253475),
