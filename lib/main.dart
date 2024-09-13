@@ -5,6 +5,7 @@ import 'firebase_options.dart';
 import 'package:hpp_tax_center/view/persediaan_awal.dart';
 import 'package:hpp_tax_center/view/splash_view.dart';
 import 'package:hpp_tax_center/view/home.dart';
+import 'package:hpp_tax_center/pages/home_page.dart';
 
 import 'package:hpp_tax_center/auth/login.dart';
 import 'package:hpp_tax_center/auth/forgot.dart';
