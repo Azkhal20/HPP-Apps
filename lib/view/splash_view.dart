@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpp_tax_center/auth/regist.page.dart';
+import 'package:hpp_tax_center/auth/regist_page.dart';
 import 'package:hpp_tax_center/auth/login.dart';
 
 class SplashView extends StatelessWidget {
@@ -51,7 +51,7 @@ class SplashView extends StatelessWidget {
                   height: 50,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xffF253475),
+                      backgroundColor: Color(0xffF29100),
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                       ),
@@ -87,7 +87,7 @@ class SplashView extends StatelessWidget {
                     child: Text(
                       "Daftar",
                       style: TextStyle(
-                        color: Color(0xff253475),
+                        color: Color(0xffF29100),
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Poppins',

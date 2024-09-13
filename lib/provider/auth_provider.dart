@@ -9,6 +9,9 @@ class AuthProvider extends ChangeNotifier {
   var islogin = true;
   var enteredEmail = '';
   var enteredPassword = '';
+  var enteredUsername = '';
+  var enteredPhoneNumber = '';
+
   void submit() async {
     final isValid = form.currentState!.validate();
 

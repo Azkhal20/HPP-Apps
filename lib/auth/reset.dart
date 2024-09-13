@@ -132,10 +132,10 @@ class ResetPage extends StatelessWidget {
                       width: 360,
                       height: 50,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF253475),
+                            backgroundColor: Color(0xFFF29100),
                             shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                             ),

@@ -200,7 +200,7 @@ class RegistPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF253475),
+                            backgroundColor: Color(0xFFF29100),
                             shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                             ),
@@ -234,16 +234,16 @@ class RegistPage extends StatelessWidget {
                           'Sudah memiliki akun?'
                         ),
                         TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: TextStyle(
-                              color: Color(0xFF3E63F4),
-                            ),
-                          ),
                           key: Key('Login'),
                           onPressed: () {
                             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                           },
-                          child: Text('Masuk'),
+                          child: Text(
+                            style: TextStyle(
+                              color: Color(0xFF3E63F4),
+                            ),
+                            'Masuk',
+                            ),
                         ),
                       ],
                     ),
