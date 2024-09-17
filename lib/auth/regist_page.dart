@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
 import 'package:hpp_tax_center/auth/login.dart';
 import 'package:hpp_tax_center/auth/otp.dart';
+import 'package:hpp_tax_center/user_auth/auth_controller.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 
 
 class RegistPage extends StatelessWidget {
   final _formKey = GlobalKey<FormBuilderState>();
+  
+  final authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +204,7 @@ class RegistPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFF29100),
+                            backgroundColor: Color(0xFF080C67),
                             shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                             ),

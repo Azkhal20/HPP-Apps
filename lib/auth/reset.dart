@@ -40,7 +40,7 @@ class ResetPage extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis at sem venenatis.',
+                        'Yuk, kita atur ulang kata sandi Anda agar akun Anda tetap aman!',
                         textAlign: TextAlign.center,
                         ),
                     ),
@@ -135,7 +135,7 @@ class ResetPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFF29100),
+                            backgroundColor: Color(0xFF080C67),
                             shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                             ),

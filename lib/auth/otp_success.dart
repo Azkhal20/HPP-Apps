@@ -36,7 +36,7 @@ class OtpSuccess extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(100)),
-                    color: Color(0xffF29100),
+                    color: Color(0xff00F2C1),
                   ),
                   child: Icon(Icons.check, color: Colors.white, size: 50),
                 ),
@@ -69,7 +69,7 @@ class OtpSuccess extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFF29100),
+                      backgroundColor: Color(0xFF080C67),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6),
                       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hpp_tax_center/user_auth/auth_controller.dart';
 import 'report_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0; // Default index untuk Beranda
+  final authC = Get.find<AuthController>();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -20,8 +23,9 @@ class _HomePageState extends State<HomePage> {
   // Daftar halaman yang akan ditampilkan berdasarkan indeks
   static List<Widget> _widgetOptions = <Widget>[
     _HomeContent(), // Halaman Beranda
-    ReportPage(),   // Halaman Laporan
-    Center(         // Halaman Akun
+    ReportPage(), // Halaman Laporan
+    Center(
+      // Halaman Akun
       child: Text(
         'Halaman Akun',
         style: TextStyle(fontSize: 24),
@@ -53,23 +57,31 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.only(right: 20),
-              width: 30,
-              height: 30,
-              child: Image.asset(
-                "../assets/icons/notification.png",
-                fit: BoxFit.contain,
-              ),
-            ),
+          IconButton(
+            color: Colors.white,
+            onPressed: () => authC.logout(),
+            icon: Icon(Icons.logout),
           ),
         ],
+        // actions: [
+        //   GestureDetector(
+        //     onTap: () {},
+        //     child: Container(
+        //       margin: EdgeInsets.only(right: 20),
+        //       width: 30,
+        //       height: 30,
+        //       child: Image.asset(
+        //         "../assets/icons/notification.png",
+        //         fit: BoxFit.contain,
+        //       ),
+        //     ),
+        //   ),
+        // ],
         backgroundColor: Color(0xFF080C67),
         elevation: 0,
       ),
-      body: _widgetOptions[_selectedIndex], // Tampilan widget berdasarkan indeks
+      body:
+          _widgetOptions[_selectedIndex], // Tampilan widget berdasarkan indeks
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -133,7 +145,8 @@ class _HomeContent extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Image.asset("../assets/icons/shop.png"),
+                            Icon(Icons.storefront_outlined,
+                                color: Color(0xFF000000)),
                             Text(
                               "Toko Kelontong Azkhal Surya",
                               style: TextStyle(
@@ -169,7 +182,7 @@ class _HomeContent extends StatelessWidget {
                         SizedBox(height: 15),
                         Row(
                           children: [
-                            Image.asset("../assets/icons/location.png"),
+                            Icon(Icons.location_on, color: Color(0xFF000000)),
                             RichText(
                               text: TextSpan(
                                 text: "Alamat Toko: ",
@@ -182,7 +195,7 @@ class _HomeContent extends StatelessWidget {
                                     text: "Jl. Rusak Surya Zavier No. 69",
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   )
@@ -196,7 +209,7 @@ class _HomeContent extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 24),
-                _buildMenu(),  // Menu sebelum laporan
+                _buildMenu(), // Menu sebelum laporan
                 SizedBox(height: 24),
                 _buildLaporan(), // Bagian laporan
                 SizedBox(height: 24),
@@ -228,32 +241,33 @@ class _HomeContent extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildMenuItem(Icons.calculate, "Calc. HPP"),
-          _buildMenuItem(Icons.add_circle, "Persediaan Awal"),
-          _buildMenuItem(Icons.report, "Pembelian"),
-          _buildMenuItem(Icons.report, "Persediaan Akhir"),
+          // BISA DIGANTI PAKE IconButton =
+          _buildMenuItem(Icons.add_circle, "Persediaan Awal", onPressed: () {
+            Get.toNamed('/persediaan_awal');
+          }),
+          _buildMenuItem(Icons.add_circle, "Pembelian", onPressed: () {}),
+          _buildMenuItem(Icons.add_circle, "Persediaan Akhir", onPressed: () {}),
         ],
       ),
     );
-  }
+  } //080C67
 
-  Widget _buildMenuItem(IconData icon, String label) {
+  Widget _buildMenuItem(IconData icon, String label, {Function()? onPressed}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            color: Color(0xFF080C67),
-            shape: BoxShape.circle,
+        ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            shape: CircleBorder(), // Membuat tombol menjadi lingkaran
+            padding: EdgeInsets.all(
+                15), // Menambahkan padding agar ukuran lingkaran sesuai
+            backgroundColor: Color(0xFF080C67),
           ),
-          child: Center(
-            child: Icon(
-              icon,
-              color: Colors.white,
-              size: 30,
-            ),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 30,
           ),
         ),
         SizedBox(height: 8),
@@ -262,6 +276,7 @@ class _HomeContent extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontSize: 12,
           ),
         ),
       ],
@@ -287,38 +302,42 @@ class _HomeContent extends StatelessWidget {
       child: Column(
         children: [
           Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween, // Menjaga jarak antara teks dan tombol
-    children: [
-      Text(
-        'Laporan',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      ElevatedButton(
-        onPressed: () {
-          // Aksi yang ingin dijalankan saat tombol ditekan
-        },
-        style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white, backgroundColor: Color(0xFF080C67), // Warna teks
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // Radius sudut
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Menjaga jarak antara teks dan tombol
+            children: [
+              Text(
+                'Laporan',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Aksi yang ingin dijalankan saat tombol ditekan
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Color(0xFF080C67), // Warna teks
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12), // Radius sudut
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 8), // Padding di dalam tombol
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.document_scanner,
+                        size: 16), // Ikon di dalam tombol
+                    SizedBox(width: 8), // Jarak antara ikon dan teks
+                    Text('Print PDF'),
+                  ],
+                ),
+              ),
+            ],
           ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Padding di dalam tombol
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.document_scanner , size: 16), // Ikon di dalam tombol
-            SizedBox(width: 8), // Jarak antara ikon dan teks
-            Text('Print PDF'),
-          ],
-        ),
-      ),
-    ],
-  ),
-  SizedBox(height: 16),
+          SizedBox(height: 16),
           Row(
             children: [
               Expanded(
@@ -329,7 +348,8 @@ class _HomeContent extends StatelessWidget {
                     SizedBox(height: 8),
                     Text('Pemasukan'),
                     SizedBox(height: 4),
-                    Text('Rp 500.000', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Rp 500.000',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -341,7 +361,8 @@ class _HomeContent extends StatelessWidget {
                     SizedBox(height: 8),
                     Text('Pengeluaran'),
                     SizedBox(height: 4),
-                    Text('Rp 10.000.000', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Rp 10.000.000',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -369,34 +390,35 @@ class _HomeContent extends StatelessWidget {
         ],
       ),
       child: Column(
-                      children: [
-                        Text(
-                          'Riwayat',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Container(
-                          height: 300, // Set a fixed height for the list
-                          child: ListView.builder(
-                            itemCount: 4, // Replace with your actual data length
-                            shrinkWrap: true, // Allow the list to shrink to fit its content
-                            itemBuilder: (context, index) {
-                              return RiwayatItem(
-                                title: "Pensil",
-                                description: "100 pcs - 10.000/pcs",
-                                price: "Rp 1.000.000",
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+        children: [
+          Text(
+            'Riwayat',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 16),
+          Container(
+            height: 300, // Set a fixed height for the list
+            child: ListView.builder(
+              itemCount: 4, // Replace with your actual data length
+              shrinkWrap: true, // Allow the list to shrink to fit its content
+              itemBuilder: (context, index) {
+                return RiwayatItem(
+                  title: "Pensil",
+                  description: "100 pcs - 10.000/pcs",
+                  price: "Rp 1.000.000",
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
+
 
 class RiwayatItem extends StatelessWidget {
   final String title;

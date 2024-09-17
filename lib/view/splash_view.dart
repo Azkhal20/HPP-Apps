@@ -19,9 +19,9 @@ class SplashView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Penjelasan \n HPP/Fitur yang \n pada Apps ini',
+              'Kelola Barang Jual\nAnda Dengan Mudah',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Poppins',
               ),
@@ -33,7 +33,7 @@ class SplashView extends StatelessWidget {
                 horizontal: 16,
               ),
               child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis at sem venenatis consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis at sem venenatis consequat.',
+                'Tingkatkan harga penjualaan anda melalui Aplikasi\nini untuk membantu lebih terstruktur dan mudah.',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -51,7 +51,7 @@ class SplashView extends StatelessWidget {
                   height: 50,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xffF29100),
+                      backgroundColor: Color(0xff080C67),
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                       ),
@@ -78,7 +78,7 @@ class SplashView extends StatelessWidget {
                       backgroundColor: Color(0xffffffff),
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
-                      side: BorderSide(color: Color(0xff253475)),
+                      side: BorderSide(color: Color(0xffF29100)),
                       ),
                     ),
                     onPressed: () {

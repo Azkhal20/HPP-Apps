@@ -40,7 +40,7 @@ class ForgotPage extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis at sem venenatis.',
+                        'Kami akan mengirimkan email berisi tautan untuk mengatur ulang kata sandi Anda.',
                         textAlign: TextAlign.center,
                         ),
                     ),
@@ -91,7 +91,7 @@ class ForgotPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFF29100),
+                            backgroundColor: Color(0xFF080C67),
                             shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                             ),

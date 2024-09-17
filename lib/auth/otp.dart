@@ -93,7 +93,7 @@ class _OtpState extends State<Otp> {
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFF29100),
+                          backgroundColor: Color(0xFF080C67),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                           ),
@@ -147,7 +147,7 @@ class _OtpState extends State<Otp> {
                         child: Text(
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFF29100),
+                              color: Color(0xFF4060F2),
                             ),
                             'Kirim ulang'),
                       ),

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:hpp_tax_center/auth/regist_page.dart';
 import 'package:hpp_tax_center/auth/forgot.dart';
-import 'package:hpp_tax_center/view/persediaan_awal.dart';
+import 'package:hpp_tax_center/pages/home_page.dart';
+import 'package:hpp_tax_center/user_auth/auth_controller.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
-  final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -15,6 +17,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isChecked = false; // State untuk Checkbox
+
+  final emailC = TextEditingController(text: "testlogin@gmail.com");
+  final passC = TextEditingController(text: "123123");
+
+  final authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'Username',
+                        'Email',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
@@ -67,18 +74,19 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: FormBuilderTextField(
-                    key: Key('username'),
-                    name: 'username',
+                    controller: emailC,
+                    key: Key('email'),
+                    name: 'email',
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                         borderSide: BorderSide(),
                       ),
-                      hintText: 'Masukkan Username Anda*',
+                      hintText: 'Masukkan Email Anda*',
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(
-                          errorText: 'Username wajib diisi'),
+                          errorText: 'Email wajib diisi'),
                       FormBuilderValidators.email(),
                     ]),
                   ),
@@ -106,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: FormBuilderTextField(
+                    controller: passC,
                     key: Key('password'),
                     name: 'password',
                     decoration: InputDecoration(
@@ -174,18 +183,13 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFF29100),
+                          backgroundColor: Color(0xFF080C67),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                           ),
                         ),
                         key: Key('Login'),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PerAwal()));
-                        },
+                        onPressed: () => authC.login(emailC.text, passC.text),
                         child: Text(
                           style: TextStyle(
                             color: Colors.white,
